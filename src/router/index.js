@@ -32,7 +32,6 @@ export default new VueRouter({
     {
       path: '',
       component: Home,
-      // meta: { requiresAuth: true },
       children: [
         {
           name: '介紹',
@@ -58,33 +57,6 @@ export default new VueRouter({
           component: Productdetail,
           meta: { title: '陶藝綻放-產品詳情' },
         },
-        // {
-        //     name:"",
-        //     path:'/page',
-        //     // component:Page,
-        //     components:{
-        //         default:Page,
-        //         menu:Menu,
-        //     },
-        //     children:[
-        //         {
-        //             name:"卡片1",
-        //             path:'',
-        //             component:child1,
-        //         },
-        //         {
-        //             name:"卡片2",
-        //             path:'child2',
-        //             component:child2,
-        //         },
-        //         {
-        //             name:"卡片3",
-        //             path:'child3',
-        //             // path:'child3/:id',
-        //             component:child3,
-        //         }
-        //     ]
-        // },
       ],
     },
     {
@@ -157,29 +129,3 @@ export default new VueRouter({
     },
   ],
 });
-
-// import Home from '../views/Home.vue';
-
-// Vue.use(VueRouter);
-
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'Home',
-//     component: Home,
-//   },
-//   {
-//     path: '/about',
-//     name: 'About',
-//     // route level code-splitting
-//     // this generates a separate chunk (about.[hash].js) for this route
-//     // which is lazy-loaded when the route is visited.
-//     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-//   },
-// ];
-
-// const router = new VueRouter({
-//   routes,
-// });
-
-// export default router;

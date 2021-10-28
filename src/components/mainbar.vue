@@ -20,7 +20,7 @@
     </ul>
     <ul class="navbar-nav form-inline">
       <li class="text-nowrap">
-        <router-link class="nav-link" to="/admin/products">後台管理</router-link>
+        <router-link class="nav-link" to="/admin/products">登入</router-link>
       </li>
     </ul>
   </div>

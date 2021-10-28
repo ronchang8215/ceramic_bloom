@@ -55,7 +55,9 @@
     <div class="jumbotron buyit">
       <h1 class="display-4">想選出心中的陶瓷？</h1>
       <hr class="my-4">
-      <a class="btn btn-primary btn-lg" href="#" role="button">看更多商品</a>
+      <router-link class="btn btn-primary btn-lg" role="button" to="/customproduct">
+      看更多商品</router-link>
+      <!-- <a class="btn btn-primary btn-lg" href="#" role="button">看更多商品</a> -->
     </div>
   </div>
 </div>

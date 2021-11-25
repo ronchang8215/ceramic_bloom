@@ -47,30 +47,21 @@ new Vue({
 }).$mount('#app');
 
 router.beforeEach((to, from, next) => {
-  // console.log(to);
-  function userVerify() {
-    if (to.meta.requiresAuth === true) {
-      const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
-      axios.post(api).then((res) => {
-        // console.log(res.data);
-        if (res.data.success) {
-          next();
-        } else {
-          next({
-            path: '/login',
-          });
-        }
-      });
-    } else {
-      next();
-    }
-  }
-  if (to.meta.title) {
-    userVerify();
-    document.title = to.meta.title;
-    // console.log(to.meta.title, document.title);
+  if (to.meta.requiresAuth === true) {
+    const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
+    axios.post(api).then((res) => {
+      if (res.data.success) {
+        next();
+        document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+      } else {
+        next({
+          path: '/login',
+        });
+        document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+      }
+    });
   } else {
-    userVerify();
-    document.title = '陶藝綻放';
+    next();
+    document.title = to.meta.title ? to.meta.title : '陶藝綻放';
   }
 });

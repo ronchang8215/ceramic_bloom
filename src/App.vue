@@ -14,7 +14,7 @@ export default {
     ScrollAnimate() {
       $(window).scroll(() => {
         /* Check the location of each desired element */
-        $('.jumbotron').each(function () {
+        $('.jumbotron').each(function indexscroll() {
           const bottomofobject = $(this).offset().top;
           //  + $(this).outerHeight()
           const bottomofwindow = $(window).scrollTop() + $(window).height();
@@ -27,7 +27,7 @@ export default {
     },
     scroll() {
       let temp = 0;
-      $(window).scroll(function () {
+      $(window).scroll(function navbarscroll() {
         const scrolltop = $(this).scrollTop();
         if (scrolltop > temp) {
           $('.navbar').stop().animate({ top: '-60px' }, 0.3);
@@ -38,7 +38,7 @@ export default {
       });
     },
   },
-  created() {
+  mounted() {
     this.ScrollAnimate();
     this.scroll();
   },
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import"./assets/all";
+@import"./assets/scss/all";
 
 html, body, #app{
   height:100%;

@@ -27,13 +27,14 @@ export default {
   },
   methods: {
     updateMessage(message, status) {
+      const vm = this;
       const timestamp = Math.floor(new Date() / 1000);
-      this.messages.push({
+      vm.messages.push({
         message,
         status,
         timestamp,
       });
-      this.removeMessageWithTiming(timestamp);
+      vm.removeMessageWithTiming(timestamp);
     },
     removeMessage(num) {
       this.messages.splice(num, 1);
@@ -62,7 +63,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style>
 .message-alert {
   position: fixed;
   max-width: 50%;

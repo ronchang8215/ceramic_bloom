@@ -1,62 +1,62 @@
 <template>
-<div class="pt-6">
-  <loading :active.sync="isLoading"></loading>
-  <h1>{{ product.title }}</h1>
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-12 col-lg-6 px-3">
-        <div class="productphoto" :style="{backgroundImage:`url(${product.imageUrl})`}"></div>
-      </div>
-      <div class="col-12 col-lg-6 px-3">
-        <div class="product px-3">
-          <h5 class="modal-title my-3">{{ product.title }}</h5>
-          <div class="my-3">
-            <p>{{ product.description }}</p>
-          </div>
-          <div class="d-flex my-3 align-items-baseline">
-            <div class="h4" v-if="!product.price">NT${{ product.origin_price }} </div>
-            <del class="h6" v-if="product.price"> NT${{ product.origin_price }} </del>
-            <div class="h4" v-if="product.price"> NT${{ product.price }} </div>
-          </div>
-          <label>數量</label>
-          <div class="d-flex justify-content-between align-items-baseline">
-            <div>
-              <select name="" class="form-control" v-model="number">
-                <option :value="num" v-for="num in 10" :key="num">
-                {{ num }}
-                </option>
-              </select>
-              <div class="text-muted text-nowrap mr-3">
-                  共<strong>{{ number * product.price }}</strong> 元
-              </div>
+  <div class="pt-6">
+    <Loading :active.sync="isLoading" />
+    <h1>{{ product.title }}</h1>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-12 col-lg-6 px-3">
+          <div class="productphoto" :style="{backgroundImage:`url(${product.imageUrl})`}"></div>
+        </div>
+        <div class="col-12 col-lg-6 px-3">
+          <div class="product px-3">
+            <h5 class="modal-title my-3">{{ product.title }}</h5>
+            <div class="my-3">
+              <p>{{ product.description }}</p>
             </div>
-            <button type="button" class="btn btn-primary" @click="addtoCart(product.id, number)"
-            :disabled="product.id === status.loadingItem">
-              <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
-              加到購物車
-            </button>
-          </div>
-          <div class="content">
-            <pre class="mb-0">產品說明<br>{{ product.content }}</pre>
+            <div class="d-flex my-3 align-items-baseline">
+              <div class="h4" v-if="!product.price">NT${{ product.origin_price }} </div>
+              <del class="h6" v-if="product.price"> NT${{ product.origin_price }} </del>
+              <div class="h4" v-if="product.price"> NT${{ product.price }} </div>
+            </div>
+            <label>數量</label>
+            <div class="d-flex justify-content-between align-items-baseline">
+              <div>
+                <select name="" class="form-control" v-model="number">
+                  <option :value="num" v-for="num in 10" :key="num">
+                  {{ num }}
+                  </option>
+                </select>
+                <div class="text-muted text-nowrap mr-3">
+                    共<strong>{{ number * product.price }}</strong> 元
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" @click="addtoCart(product.id, number)"
+              :disabled="product.id === status.loadingItem">
+                <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
+                加到購物車
+              </button>
+            </div>
+            <div class="content">
+              <pre class="mb-0">產品說明<br>{{ product.content }}</pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-  <div class="row">
-    <div class="liketitle col-12">
-    <span>你可能也喜歡……</span>
-  </div>
-    <div class="col-lg-4 col-sm-6 mb-4" v-for="(item,index) in products" :key="item.id">
-      <Card v-if="index<3" :card="item" :loadingItem="status.loadingItem"
-      @getCardProduct="toProduct" @addCardtoCart="addtoCart" />
+    <div class="container">
+      <div class="row">
+        <div class="liketitle col-12">
+          <span>你可能也喜歡……</span>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-4" v-for="(item,index) in products" :key="item.id">
+          <Card v-if="index<3" :card="item" :loadingItem="status.loadingItem"
+          @getCardProduct="toProduct" @addCardtoCart="addtoCart" />
+        </div>
+      </div>
+      <router-link class="btn button__producttoshop mb-3" role="button" to="/customproduct">
+      回商品頁</router-link>
     </div>
   </div>
-  <router-link class="btn button__producttoshop mb-3" role="button" to="/customproduct">
-  回商品頁</router-link>
-  </div>
-</div>
 </template>
 
 <script>

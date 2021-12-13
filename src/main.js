@@ -22,7 +22,6 @@ Object.keys(rules).forEach((rule) => {
 });
 
 Vue.use(Vueaxios, axios);
-Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
 
 localize('zh_TW', TW);
@@ -37,7 +36,7 @@ configure({
   },
 });
 
-Vue.component('loading', Loading);
+Vue.component('Loading', Loading);
 Vue.filter('currency', currency);
 Vue.filter('date', date);
 

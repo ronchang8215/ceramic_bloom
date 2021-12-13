@@ -1,16 +1,16 @@
 <template>
-<div>
-  <BackendNavbar/>
-  <ErrorAlert/>
-  <div class="container-fluid">
-    <div class="row">
-      <BackendSidebar/>
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <router-view></router-view>
-      </main>
+  <div>
+    <BackendNavbar/>
+    <ErrorAlert/>
+    <div class="container-fluid">
+      <div class="row">
+        <BackendSidebar/>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <RouterView/>
+        </main>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

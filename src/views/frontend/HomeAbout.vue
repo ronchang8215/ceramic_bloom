@@ -1,28 +1,32 @@
 <template>
-<div class="animate__fadeIn">
-  <div class="banner mb-3">
-    <h1>關於我們</h1>
-    <p>與你說說我們的事。</p>
-  </div>
-  <div class="about__content py-3">
-    <h2 class="titleone">我們是誰</h2>
-    <p class="paraone animate__fadeIn">我們是志於發展台灣陶藝文化的一群人，隨著時代的演變，傳統維護不易，而讓更多人接觸到他的浪漫是我們的使命。</p>
-    <h2 class="titletwo">關於未來</h2>
-    <p class="paratwo animate__fadeIn">作為一個專於陶藝的通路，我們希望與更多店家及廠商合作，使商品更加多元化，也更能吸引大眾來注意到陶藝的美。</p>
-    <div class="aboutPicture"></div>
-  </div>
-  <div class="jumbotron p-3">
-    <h4>若有任何建議、疑問或合作事宜，歡迎連絡我們</h4>
-    <div class="row">
-      <div class="col p-3 m-3">
-        <h3><i class="fas fa-phone"></i></h3><span>（02）2222-0000</span>
-      </div>
-      <div class="col p-3 m-3">
-        <h3><i class="fas fa-envelope"></i></h3><span>ceraBloom@gmali.com</span>
+  <div class="animate__fadeIn">
+    <div class="banner mb-3">
+      <h1>關於我們</h1>
+      <p>與你說說我們的事。</p>
+    </div>
+    <div class="about__content py-3">
+      <h2 class="titleone">我們是誰</h2>
+      <p class="paraone animate__fadeIn">我們是志於發展台灣陶藝文化的一群人，隨著時代的演變，傳統維護不易，而讓更多人接觸到他的浪漫是我們的使命。</p>
+      <h2 class="titletwo">關於未來</h2>
+      <p class="paratwo animate__fadeIn">作為一個專於陶藝的通路，我們希望與更多店家及廠商合作，使商品更加多元化，也更能吸引大眾來注意到陶藝的美。</p>
+      <div class="aboutPicture"></div>
+    </div>
+    <div class="jumbotron p-3">
+      <h4>若有任何建議、疑問或合作事宜，歡迎連絡我們</h4>
+      <div class="row">
+        <div class="col p-0 m-3">
+          <a href="tel:02-22220000" class="p-3">
+          <h3><i class="fas fa-phone"></i></h3><span>（02）2222-0000</span>
+          </a>
+        </div>
+        <div class="col p-0 m-3">
+          <a href="mailto:ceraBloom@gmali.com" class="p-3">
+          <h3><i class="fas fa-envelope"></i></h3><span>ceraBloom@gmali.com</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
@@ -85,13 +89,13 @@ div {
     background-position: center;
     width:35%;
     height:35rem;
-    margin:5rem 0 5rem 55%;
+    margin:5rem 0 5rem 58%;
     position: relative;
 
     &::before {
       position:absolute;
       top:-2rem;
-      right:50%;
+      right:65%;
       content:"";
       width:180%;
       height:18rem;
@@ -103,7 +107,7 @@ div {
     &::after {
       position:absolute;
       top:80%;
-      left:80%;
+      left:75%;
       content:"";
       width:8rem;
       height:8rem;
@@ -113,12 +117,21 @@ div {
 }
 
 .jumbotron {
-  width:80%;
+  width:85%;
   margin:0 auto;
   color:#575757;
 
   .col {
     background:rgba(0,0,0,0.5);
+
+    a {
+      color:#fff;
+      display:block;
+
+      &:hover {
+        text-decoration:none;
+      }
+    }
   }
 }
 
@@ -136,7 +149,7 @@ div {
 
     .aboutPicture::after {
       top:85%;
-      left:60%;
+      left:55%;
     }
   }
 }
@@ -149,7 +162,7 @@ div {
     }
 
     p {
-      font-size:1.5rem;
+      font-size:1.3rem;
     }
     .titleone,.titletwo,.paraone,.paratwo{
       left:0;
@@ -198,6 +211,9 @@ div {
       width:6rem;
       left:68%;
     }
+  }
+  .col {
+    min-width:50%;
   }
 }
 </style>

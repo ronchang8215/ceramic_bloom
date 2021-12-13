@@ -1,6 +1,6 @@
 <template>
-<div>
-  <loading :active.sync="isLoading"></loading>
+  <div>
+    <Loading :active.sync="isLoading" />
     <table class="table mt-4">
       <thead>
         <tr>
@@ -31,7 +31,7 @@
       </tbody>
     </table>
     <Pagination :pages="pagination" @getPage="getOrder" />
-</div>
+  </div>
 </template>
 
 <script>
@@ -54,8 +54,8 @@ export default {
       vm.isLoading = true;
       vm.$http.get(`${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${page}`).then((res) => {
         vm.orders = res.data.orders;
-        vm.isLoading = false;
         vm.pagination = res.data.pagination;
+        vm.isLoading = false;
       });
     },
   },

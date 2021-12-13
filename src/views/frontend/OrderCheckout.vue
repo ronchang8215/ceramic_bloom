@@ -1,104 +1,104 @@
 <template>
-<div>
-  <div class="progress" style="height: 5px;">
-    <div class="progress-bar progressbar" role="progressbar"
-    style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <div class="container">
-    <div class="my-5 row justify-content-center">
-      <form class="col-md-10" @submit.prevent="payOrder">
-        <table class="table">
-          <thead>
-            <th></th>
-            <th>品名</th>
-            <th>數量</th>
-            <th>總價</th>
-          </thead>
-          <tbody>
-            <tr class="cartlist" v-for="item in order.products" :key="item.id">
-              <td width="40%" class="align-middle tableimage"
-              :style="{backgroundImage:`url(${item.product.imageUrl})`}">
-              </td>
-              <td class="align-middle">
-                {{ item.product.title }}
-                <div class="text-success" v-if="item.coupon">
-                  已套用優惠券
-                </div>
-              </td>
-              <td class="align-middle">{{ item.qty }}{{ item.product.unit }}</td>
-              <td class="align-middle">
-                <del v-if="item.total!==item.final_total">{{ item.total }}</del>
-                {{ item.final_total }}元
-                <div v-if="item.qty!==1" style="font-size:0.5rem">
-                  {{ item.product.price }}元/{{ item.product.unit }}
-                </div>
-              </td>
-              </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3">總計</td>
-              <td>{{ order.total }}元</td>
-            </tr>
-          </tfoot>
-        </table>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th width="100">Email</th>
-              <td>{{ order.user.email }}</td>
-            </tr>
-            <tr>
-              <th>姓名</th>
-              <td>{{ order.user.name }}</td>
-            </tr>
-            <tr>
-              <th>收件人電話</th>
-              <td>{{ order.user.tel }}</td>
-            </tr>
-            <tr>
-              <th>收件人地址</th>
-              <td>{{ order.user.address }}</td>
-            </tr>
-            <tr>
-              <th>付款狀態</th>
-              <td>
-                <span v-if="!order.is_paid" class="text-danger">尚未付款</span>
-                <span v-else class="text-success">付款完成</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="text-right" v-if="order.is_paid === false">
-          <button class="btn btn-primary mb-3">確認付款去</button>
-        </div>
-      </form>
+  <div>
+    <div class="progress" style="height: 5px;">
+      <div class="progress-bar progressbar" role="progressbar"
+      style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-  </div>
-<!-- 付款完成Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content border-0">
-        <div class="modal-header text-white">
-          <h5 class="modal-title" id="exampleModalLabel">付款完成</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <i class="fas fa-check-circle text-success display-4"></i><br>
-          😊&emsp;謝謝您的支持！您還可以選擇選購。
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-dismiss="modal">關閉</button>
-          <button type="button" class="btn btn-primary" @click="continueShop">
-            繼續逛逛
-          </button>
+    <div class="container">
+      <div class="my-5 row justify-content-center">
+        <form class="col-md-10" @submit.prevent="payOrder">
+          <table class="table">
+            <thead>
+              <th></th>
+              <th>品名</th>
+              <th>數量</th>
+              <th>總價</th>
+            </thead>
+            <tbody>
+              <tr class="cartlist" v-for="item in order.products" :key="item.id">
+                <td width="40%" class="align-middle tableimage"
+                :style="{backgroundImage:`url(${item.product.imageUrl})`}">
+                </td>
+                <td class="align-middle">
+                  {{ item.product.title }}
+                  <div class="text-success" v-if="item.coupon">
+                    已套用優惠券
+                  </div>
+                </td>
+                <td class="align-middle">{{ item.qty }}{{ item.product.unit }}</td>
+                <td class="align-middle">
+                  <del v-if="item.total!==item.final_total">{{ item.total }}</del>
+                  {{ item.final_total }}元
+                  <div v-if="item.qty!==1" style="font-size:0.5rem">
+                    {{ item.product.price }}元/{{ item.product.unit }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">總計</td>
+                <td>{{ order.total }}元</td>
+              </tr>
+            </tfoot>
+          </table>
+          <table class="table order__user">
+            <tbody>
+              <tr>
+                <th width="100">Email</th>
+                <td>{{ order.user.email }}</td>
+              </tr>
+              <tr>
+                <th>姓名</th>
+                <td>{{ order.user.name }}</td>
+              </tr>
+              <tr>
+                <th>收件人電話</th>
+                <td>{{ order.user.tel }}</td>
+              </tr>
+              <tr>
+                <th>收件人地址</th>
+                <td>{{ order.user.address }}</td>
+              </tr>
+              <tr>
+                <th>付款狀態</th>
+                <td>
+                  <span v-if="!order.is_paid" class="text-danger">尚未付款</span>
+                  <span v-else class="text-success">付款完成</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right" v-if="order.is_paid === false">
+            <button type="submit" class="btn btn-primary mb-3">確認付款去</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <!-- 付款完成Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content border-0">
+          <div class="modal-header text-white">
+            <h5 class="modal-title" id="exampleModalLabel">付款完成</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <i class="fas fa-check-circle text-success display-4"></i><br>
+            😊&emsp;謝謝您的支持！您還可以選擇選購。
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">關閉</button>
+            <button type="button" class="btn btn-primary" @click="continueShop">
+              繼續逛逛
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -249,6 +249,24 @@ tfoot tr {
 
   td:last-child{
     border-radius:0 0 1rem 0;
+  }
+}
+
+.order__user {
+  tbody {
+    background:none;
+
+    td {
+      background:#fff;
+    }
+
+    tr:first-child td {
+      border-radius:0 1rem 0 0;
+    }
+
+    tr:last-child td {
+      border-radius:0 0 1rem 0;
+    }
   }
 }
 

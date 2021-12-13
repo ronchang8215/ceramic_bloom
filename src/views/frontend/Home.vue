@@ -2,7 +2,7 @@
   <div class="hello">
     <FrontendNavbar/>
     <div class="content">
-      <router-view></router-view>
+      <RouterView/>
     </div>
     <footer class="mastfoot mt-3">
       <h2 class="mb-3">陶藝綻放</h2>

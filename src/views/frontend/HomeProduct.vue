@@ -1,14 +1,14 @@
 <template>
-<div>
-  <loading :active.sync="isLoading"></loading>
-  <div class="banner mb-3">
-    <h1>陶藝商店</h1>
-    <p>還沒找到你想要的嗎？</p>
-  </div>
-  <h4 class="coupon text-left p-3">
-    <i class="fas fa-bullhorn mr-3"></i>結帳時輸入優惠碼discount70，即可享7折優惠
-  </h4>
-  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+  <div>
+    <Loading :active.sync="isLoading" />
+    <div class="banner mb-3">
+      <h1>陶藝商店</h1>
+      <p>還沒找到你想要的嗎？</p>
+    </div>
+    <h4 class="coupon text-left p-3">
+      <i class="fas fa-bullhorn mr-3"></i>結帳時輸入優惠碼discount70，即可享7折優惠
+    </h4>
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div>
         <h6 class="sidebar-heading d-flex justify-content-between
         align-items-center px-3 mt-4 mb-1 text-muted">
@@ -38,16 +38,16 @@
           </li>
         </ul>
       </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-lg-4 mb-4" v-for="item in filterProducts" :key="item.id">
-        <Card :card="item" :loadingItem="status.loadingItem"
-        @getCardProduct="getProduct" @addCardtoCart="addtoCart" />
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-lg-4 mb-4" v-for="item in filterProducts" :key="item.id">
+          <Card :card="item" :loadingItem="status.loadingItem"
+          @getCardProduct="getProduct" @addCardtoCart="addtoCart" />
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -154,7 +154,7 @@ export default {
 }
 
 .sidebar {
-  margin-top:5rem;
+  margin:5rem 0 0 3rem;
   position:relative;
   padding:0px;
 
@@ -189,7 +189,7 @@ export default {
   .sidebar {
     width:100%;
     display:block;
-    margin-top:-3rem;
+    margin:-3rem 0 0 0;
     padding:0.5rem;
     background:rgba(255,255,255,0.5);
     z-index: 0;

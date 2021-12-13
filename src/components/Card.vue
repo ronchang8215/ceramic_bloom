@@ -10,16 +10,16 @@
       </h5>
       <div class="d-flex justify-content-between align-items-end my-3">
         <div>
-        <div class="h5" v-if="!card.price">NT${{ card.origin_price }}</div>
-        <del class="h6" v-if="card.price">NT${{ card.origin_price }}</del>
-        <div class="h5" v-if="card.price">NT${{ card.price }}</div>
+          <div class="h5" v-if="!card.price">NT${{ card.origin_price }}</div>
+          <del class="h6" v-if="card.price">NT${{ card.origin_price }}</del>
+          <div class="h5" v-if="card.price">NT${{ card.price }}</div>
         </div>
         <div @click.stop>
-        <button type="button" class="btn btn-outline-primary btn-sm ml-auto"
-        @click.stop="addCardtoCart(card.id)" :disabled="card.id === loadingItem">
-        <i class="fas fa-spinner fa-spin" v-if="card.id === loadingItem"></i>
-        <i class="fas fa-shopping-cart" v-else></i>
-        </button>
+          <button type="button" class="btn btn-outline-primary btn-sm ml-auto"
+          @click.stop="addCardtoCart(card.id)" :disabled="card.id === loadingItem">
+            <i class="fas fa-spinner fa-spin" v-if="card.id === loadingItem"></i>
+            <i class="fas fa-shopping-cart" v-else></i>
+          </button>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
         @getCardProduct="getProduct" @addCardtoCart="addtoCart" />
       </div>
     </div>
-    <table class="table">
+    <table class="table" v-show="cartLength>0">
       <thead>
         <th colspan="5">購買清單</th>
       </thead>
@@ -130,8 +130,8 @@
           <div class="modal-body">
             <img :src="product.imageUrl" class="img-fluid" :alt="product.title">
             <blockquote class="blockquote mt-3">
-              <p class="mb-0">{{ product.description }}</p>
-              <footer class="blockquote-footer text-right">{{ product.content }}</footer>
+              <p class="mb-0 text-left">{{ product.description }}</p>
+              <pre class="blockquote-footer text-right">{{ product.content }}</pre>
             </blockquote>
             <div class="d-flex justify-content-between align-items-baseline">
               <div class="h4" v-if="!product.price">{{ product.origin_price }} 元</div>
@@ -200,13 +200,16 @@ export default {
     },
   },
   methods: {
-    getProducts() {
+    getProducts(cb) {
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(`${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`).then((res) => {
         if (res.data.success) {
           vm.products = res.data.products;
           vm.isLoading = false;
+          if (cb) {
+            cb();
+          }
         }
       });
     },
@@ -294,8 +297,8 @@ export default {
     },
   },
   created() {
-    this.getProducts();
-    this.getCart();
+    const vm = this;
+    vm.getProducts(vm.getCart);
   },
 };
 </script>
@@ -355,4 +358,9 @@ form {
     border-radius: 0.2rem;
   }
 }
+
+.blockquote-footer::before {
+  content:'';
+}
+
 </style>

@@ -42,25 +42,36 @@ Vue.filter('date', date);
 
 new Vue({
   router,
+  created() {
+    const title = localStorage.getItem('title') || '';
+    if (title) {
+      document.title = title;
+    }
+  },
   render: (h) => h(App),
 }).$mount('#app');
 
 router.beforeEach((to, from, next) => {
+  function titleChange() {
+    document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+    localStorage.setItem('title', to.meta.title);
+  }
+
   if (to.meta.requiresAuth === true) {
     const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
     axios.post(api).then((res) => {
       if (res.data.success) {
         next();
-        document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+        titleChange();
       } else {
         next({
           path: '/login',
         });
-        document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+        titleChange();
       }
     });
   } else {
     next();
-    document.title = to.meta.title ? to.meta.title : '陶藝綻放';
+    titleChange();
   }
 });

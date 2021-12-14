@@ -104,9 +104,8 @@ export default {
       vm.$http.get(`${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`).then((res) => {
         vm.product = res.data.product;
         vm.categoryName = res.data.product.category;
-        vm.getProducts(() => {
-          vm.isLoading = false;
-        });
+        vm.isLoading = false;
+        vm.getProducts();
       });
     },
     getProducts() {

@@ -122,9 +122,8 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
       vm.status.loadingItem = id;
       vm.$http.delete(url).then(() => {
-        vm.getCart(() => {
-          vm.status.loadingItem = '';
-        });
+        vm.getCart();
+        vm.status.loadingItem = '';
       });
     },
     getCart() {
@@ -219,6 +218,14 @@ export default {
 
   tr {
     margin:1rem 0;
+
+    td {
+      padding:0.5rem;
+    }
+
+    td:last-child{
+      padding-right:0rem;
+    }
   }
 
   tfoot {
@@ -254,6 +261,14 @@ export default {
 
     .nav-link {
       padding:0.5rem 1rem;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .toast {
+    .col {
+      padding:0;
     }
   }
 }

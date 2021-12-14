@@ -336,7 +336,7 @@ tfoot tr {
   }
 }
 
-@media (max-width:768px) {
+@media (max-width:767px) {
   .progress {
     margin:5rem;
 

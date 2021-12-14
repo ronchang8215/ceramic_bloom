@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="display-3"><span>來這選出你的陶瓷</span></div>
-      <div class="jumbotron benefit">
+      <div class="jumbotron benefit px-0">
         <h2 class="my-3 p-3">我們的服務</h2>
         <div class="row">
           <div class="col-md-4">
@@ -344,7 +344,7 @@ main {
 
   &:hover > &__mask {
     background:rgba(0,0,0,0.5);
-    font-size:1.5rem;
+    font-size:1.2rem;
     color:#fff;
     text-decoration: none;
   }

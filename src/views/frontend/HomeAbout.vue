@@ -154,7 +154,7 @@ div {
   }
 }
 
-@media (max-width:768px) {
+@media (max-width:767px) {
   .about__content {
 
     h2 {
